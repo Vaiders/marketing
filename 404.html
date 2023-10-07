@@ -11,6 +11,7 @@
     </div>
     <div id="emoji-container"></div>
 
+
     <script>
         function hashCode(str) {
     let hash = 0;
@@ -48,13 +49,17 @@
             contentDiv.innerHTML = route
         }
 
+        var currentURL = window.location.href;
+
         // Initial load
-        loadContent(window.location.hash);
+        loadContent(currentURL);
+        
 
         // Handle navigation clicks
         window.addEventListener('hashchange', function() {
             loadContent(window.location.hash);
         });
+
     </script>
 </body>
 </html>
