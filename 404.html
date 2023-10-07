@@ -50,15 +50,19 @@
         }
 
         var currentURL = window.location.href;
+        var segments = currentURL.split("/");
+        // Get the last part (last segment of the path)
+        var lastPart = segments[segments.length - 1];
 
         // Initial load
-        loadContent(currentURL);
+        loadContent(lastPart);
         
 
         // Handle navigation clicks
         window.addEventListener('hashchange', function() {
-            loadContent(window.location.hash);
+            loadContent(lastPart);
         });
+
 
     </script>
 </body>
