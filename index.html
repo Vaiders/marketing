@@ -5,56 +5,27 @@
     <meta charset="UTF-8">
 </head>
 <body>
+
     <h1>Banana Rating for </h1>
-    <div id="content">
-        <!-- Content will be dynamically loaded here based on the route -->
-    </div>
-    <div id="emoji-container"></div>
-
+    <form id="myForm" method="POST">
+        <input type="text" id="inputValue" name="inputValue" required>
+        <input type="submit" value="🍌?">
+    </form>
+    
     <script>
-        function hashCode(str) {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-        const char = str.charCodeAt(i);
-        hash = (hash << 5) - hash + char;
-    }
-    return Math.abs(hash);
-}
-
-    function stringToNumberInRange(inputString, min, max) {
-        const hash = hashCode(inputString);
-        const range = max - min + 1;
-        return (hash % range) + min;
-    }
-
-    function displayEmojis(emoji, count) {
-            const emojiContainer = document.getElementById('emoji-container');
-            let emojiHTML = '';
-
-            for (let i = 0; i < count; i++) {
-                emojiHTML += emoji;
-            }
-
-            emojiContainer.innerHTML = emojiHTML;
-
-            return emojiHTML
-        }
-
-
-        function loadContent(route) {
-            const contentDiv = document.getElementById('content');
-            const numberOfBananas = stringToNumberInRange(route.toLowerCase(), 0, 6);
-            displayEmojis("🍌", numberOfBananas)
-            contentDiv.innerHTML = route
-        }
-
-        // Initial load
-        loadContent(window.location.hash);
-
-        // Handle navigation clicks
-        window.addEventListener('hashchange', function() {
-            loadContent(window.location.hash);
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var inputValue = document.getElementById("inputValue").value;
+            var nextPage = "" + inputValue;
+            this.action = nextPage;
+            this.submit();
         });
     </script>
+    
+    
+    
+    
+    
+    
 </body>
 </html>
