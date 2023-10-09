@@ -11,12 +11,20 @@
 <button id="submitButton">🍌?</button>
 
 <script>
- document.getElementById("submitButton").addEventListener("click", function () {
-     var inputValue = document.getElementById("inputValue").value;
-     var nextPage = inputValue; // You can directly use the input value
-     // Change the current window's location to the URL based on the input value
-     window.location.href = nextPage;
- });
+// Function to handle the button click
+function handleButtonClick() {
+ var inputValue = document.getElementById("inputValue").value;
+ var nextPage = inputValue;
+ window.location.href = nextPage;
+}
+
+document.getElementById("submitButton").addEventListener("click", handleButtonClick);
+
+document.getElementById("inputValue").addEventListener("keydown", function (event) {
+ if (event.keyCode === 13) {
+   handleButtonClick();
+ }
+});
 </script>
     
     
